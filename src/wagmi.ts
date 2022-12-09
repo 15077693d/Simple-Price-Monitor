@@ -33,8 +33,10 @@ export const client = createClient({
     new InjectedConnector({
       chains,
       options: {
-        name: "Injected",
+        name: "Trustwallet",
         shimDisconnect: true,
+        getProvider: () =>
+          typeof window !== "undefined" ? window.trustwallet : undefined,
       },
     }),
   ],
